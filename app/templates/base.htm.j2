@@ -1,0 +1,104 @@
+<html>
+  <head>
+    <title>Revisionr</title>
+    <meta name="theme-color" content="#ffffff">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+
+    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/litera/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sticky-footer.css') }}">
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <link href="https://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"></link>
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
+  </head>
+  <body>
+    {% include 'includes/_navbar.htm.j2' %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert w-50 shadow mx-auto alert-dismissible alert-{{category}} fade show">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            {% if category=='warning' %}
+            <strong>Oh snap!</strong>
+            {% else %}
+            <strong>Oh nice!</strong>
+            {% endif %}
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+    <script type="text/javascript">
+      feather.replace()
+      
+      function clearField() {
+         if(document.getElementById) {
+            document.chatform.reset();
+         }
+      }
+
+      $(function() {
+          $("#autocomplete").autocomplete({
+              source:function(request, response) {
+                  $.getJSON("{{url_for('autocomplete')}}",{
+                    q: request.term, // in flask, "q" will be the argument to look for using request.args
+                  }, function(data) {
+                    response(data.matching_results[0]); // matching_results from jsonify
+                    $( "#subject" ).empty();
+                    $( "#subject" ).val( Object.keys(data.matching_results[0]) );
+                  });
+              },
+              minLength: 2,
+              select: function(event, ui) {
+                console.log(ui.item.value); // not in your question, but might help later
+              }
+          });
+      })
+    </script>
+    <script>
+      $(document).ready(function(){
+        $('[data-toggle="popover"]').popover({
+          trigger: 'focus',
+          html: true,
+          content:function(){
+            return $($(this).data('contentwrapper')).html();
+          }
+        });
+        $('[data-toggle="tooltip"]').tooltip();
+
+
+        var x = $("{{request.endpoint}}").prevObject[0]['URL']
+
+        if (x.indexOf('calendar') >= 0){
+          $("#Calendar").addClass("active");
+        }
+        else if (x.indexOf('school') >= 0){
+          $("#School").addClass("active");
+        }
+        else if (x.indexOf('about') >= 0){
+          $("#About").addClass("active");
+        }
+        else {
+          $("#Home").addClass("active");
+        }
+      });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+    <footer class="footer">
+      <div class="container mx-auto text-center small">
+            <span class="text-muted">Place sticky footer content &#169; here.</span>
+          <span class="text-muted">•</span> <a href="">About</a>
+          <span class="text-muted">•</span> <a href="">Report bug</a>
+      </div>
+    </footer>
+  </body>
+</html>

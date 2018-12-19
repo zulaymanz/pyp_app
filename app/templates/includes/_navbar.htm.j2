@@ -1,0 +1,39 @@
+<!-- 
+  base.htm.j2
+ -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">Revisionr</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" id="Home">
+        <a class="nav-link" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      {% if not current_user.is_anonymous %}
+      <li class="nav-item" id="Calendar">
+        <a class="nav-link" href="#">Calendar</a>
+      </li>
+      {% endif %}
+      {% if current_user.urole == 'TEACHER' %}
+      <li class="nav-item" id="School">
+        <a class="nav-link" href="{{ url_for('restricted_view_for_school') }}">School</a>
+      </li>
+      {% endif %}
+      <li class="nav-item" id="About">
+        <a class="nav-link" href="{{ url_for('about') }}">About</a>
+      </li>
+    </ul>
+    <span class="navbar-text pr-3">
+      {% if current_user.is_anonymous %}
+        <a href="{{ url_for('login') }}">Login</a>
+        /
+        <a href="{{ url_for('register') }}">Register</a>
+      {% else %}
+        <a href="{{ url_for('logout') }}">Logout</a>
+      {% endif %}
+    </span>
+  </div>
+</nav>

@@ -1,0 +1,25 @@
+<!--
+// includes -> dashboard.html
+-->
+<h4>New grade</h4>
+<hr>
+{% from fh import render_field %}
+<form method="POST" onSubmit="clearField();">
+    {{ gform.csrf_token }}
+    <div class="form-group row align-items-center mx-sm-2 mb-2">
+        {{ gform.name.label }}
+        {{ gform.name(size=20, class_="form-control") }}
+    </div>
+    {{ gform.submit(class_="btn btn-primary mx-sm-2 mb-2") }}
+</form>
+
+<div class="legend border w-50 my-5 p-3 border-secondary rounded">
+    <h5>Grades:</h5>
+    {% for grade in grades %}
+    <div class="legend-list d-flex flex-row align-items-center pt-3">
+        <span class="legend-subject px-2">
+        {{grade[1]}}
+        </span>
+    </div>
+    {% endfor %}
+</div>

@@ -1,0 +1,58 @@
+<!--
+// includes -> dashboard.html
+-->
+<div class="form-subject">
+  <h4>New Topic</h4>
+  <hr>
+  {% from fh import render_field %}
+  <form method="POST" onSubmit="clearField();">
+    {{ tform.csrf_token }}
+    <div class="form-row">
+      <div class="form-group col-md-6">
+          {{ tform.topic.label }}
+          {{ tform.topic(size=20, class_="form-control") }}
+      </div>
+      <div class="form-group col-md-6">
+        <label for="subject">Subject <span class="text-danger">*</span></label>
+        <select name="subject" id="subject" class="form-control">
+          {% for subject in subjects %}>
+          <option value="{{subject.id}}">{{subject.subject_name}}</option>
+          {% endfor %}
+          <option disabled></option>
+          <option value="/new/subject" class="py-4 my-4 text-primary font-weight-bold">
+            &#x2b; <strong>Add a subject</strong>
+          </option>
+        </select>
+      </div>
+    </div>
+      {{ tform.submit(class_="btn btn-primary mx-sm-2 mb-2") }}
+  </form>
+</div>
+{% for topic in topics %}
+<p>{{topic.topic_name}}</p>
+{% endfor %}
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Topic</th>
+      <th scope="col">Subject</th>
+      <th scope="col">No. of pyp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Forces</td>
+      <td>Physics</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Photosynthesis</td>
+      <td>Biology</td>
+      <td>23</td>
+    </tr>
+  </tbody>
+</table>
+<button type="button" class="btn btn-outline-primary btn-sm">+ Add pyp</button>
