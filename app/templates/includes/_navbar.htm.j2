@@ -10,7 +10,7 @@
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" id="Home">
-        <a class="nav-link" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{{ url_for('main.index') }}">Home <span class="sr-only">(current)</span></a>
       </li>
       {% if not current_user.is_anonymous %}
       <li class="nav-item" id="Calendar">
@@ -19,20 +19,20 @@
       {% endif %}
       {% if current_user.urole == 'TEACHER' %}
       <li class="nav-item" id="School">
-        <a class="nav-link" href="{{ url_for('restricted_view_for_school') }}">School</a>
+        <a class="nav-link" href="{{ url_for('school.restricted_view_for_school') }}">School</a>
       </li>
       {% endif %}
       <li class="nav-item" id="About">
-        <a class="nav-link" href="{{ url_for('about') }}">About</a>
+        <a class="nav-link" href="{{ url_for('main.about') }}">About</a>
       </li>
     </ul>
     <span class="navbar-text pr-3">
       {% if current_user.is_anonymous %}
-        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('users.login') }}">Login</a>
         /
-        <a href="{{ url_for('register') }}">Register</a>
+        <a href="{{ url_for('users.register') }}">Register</a>
       {% else %}
-        <a href="{{ url_for('logout') }}">Logout</a>
+        <a href="{{ url_for('users.logout') }}">Logout</a>
       {% endif %}
     </span>
   </div>

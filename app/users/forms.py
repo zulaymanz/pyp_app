@@ -27,20 +27,3 @@ class RegistrationForm(FlaskForm):
     user = User.query.filter_by(email=email.data).first()
     if user is not None:
       raise ValidationError('Please use a different email address.')
-
-class NewGradeForm(FlaskForm):
-  name = StringField('Grade name', validators=[DataRequired()], render_kw={"placeholder": "Senior/Junior/etc."})
-  submit = SubmitField("Submit")
-
-class NewSubjectForm(FlaskForm):
-  subject = StringField('Subject name', validators=[DataRequired()])
-  submit = SubmitField("Submit")
-
-class NewTopicForm(FlaskForm):
-  topic = StringField('Topic name', validators=[DataRequired()])
-  submit = SubmitField("Submit")
-
-class NewRevisionForm(FlaskForm):
-  start_date = DateField('Date', validators=[DataRequired()])
-  notes = TextAreaField('Notes' )
-  submit = SubmitField("Submit")
