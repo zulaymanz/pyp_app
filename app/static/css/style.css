@@ -10,3 +10,52 @@
   left: 0;
   right: 0;
 }
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar-head {
+  width: 100%;
+}
+
+.subject{
+  cursor: pointer;
+}
+.subject:hover{
+  background: #f0f0f0;
+}
+
+.subject-el {
+  width: 100px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.subject-el:hover {
+  font-weight: bold;
+}
+
+.circle{
+  position: absolute;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+}
+
+.note-icon {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  right: 10px;
+}
+
+.mycontent {
+  display: none;
+}
+
+.home-icon {
+  width: 200px;
+  height: 200px;
+}
