@@ -3,6 +3,7 @@ from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
+import calendar as cl
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -21,3 +22,7 @@ app.register_blueprint(main)
 app.register_blueprint(school)
 app.register_blueprint(users)
 app.register_blueprint(calendar)
+
+@app.template_filter('str_month')
+def reverse_filter(s):
+    return cl.month_name[s]
