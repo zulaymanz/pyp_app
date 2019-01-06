@@ -1,0 +1,19 @@
+
+<div class="user-header pb-3 m-2 border-bottom">
+  <img src="{{ url_for('static', filename=current_user.urole+'.svg') }}" alt="Avatar" class="d-inline user-avatar align-middle rounded-circle border border-primary">  
+  <h1 class="pl-2 d-inline align-middle">Hi, {{ current_user.username }}!</h1>
+  <span class="sub-nav pl-3">
+      <a id="unav-1" class="btn btn-outline-secondary border-0" href = {{ url_for('school.restricted_view_for_school') }}>
+        <i class="pr-1" style="width: 20px; height: 20px;" data-feather="settings"></i>
+        Dashboard
+      </a>
+      <a id="unav-2" class="btn btn-outline-secondary border-0" href = {{ url_for( 'pyp.dashboard') }}>
+        <i class="pr-1" style="width: 20px; height: 20px;" data-feather="archive"></i>
+        Past Year Papers
+      </a>
+      <a class="btn btn-outline-secondary border-0" href="">
+        <i class="pr-1" style="width: 20px; height: 20px;" data-feather="calendar"></i>
+        Revision iteration
+      </a>
+  </span>
+</div>

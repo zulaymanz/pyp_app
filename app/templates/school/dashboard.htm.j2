@@ -1,13 +1,10 @@
 {% extends "base.htm.j2" %}
 
 {% block content %}
-  <div class="user-header p-2 m-2 border-bottom">
-    <img src="{{ url_for('static', filename=current_user.urole+'.svg') }}" alt="Avatar" class="d-inline user-avatar align-middle rounded-circle border border-primary">  
-    <h1 class="pl-2 d-inline align-middle">Hi, {{ current_user.username }}!</h1>
-  </div>
+  {% include 'includes/_usernavbar.html' %}
 
-  <div class="row w-75 mx-auto">
-    <div class="col-3">
+  <div class="row w-75 mt-3">
+    <div class="col-3 pl-5">
       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <a class="nav-link active d-flex align-items-center" id="v-pills-rev-tab" data-toggle="pill"
            href="#v-pills-rev" role="tab"
@@ -30,25 +27,12 @@
             <i class="pr-1" style="width: 20px; height: 20px;" data-feather="briefcase"></i>
             Grade
         </a>
-        <a class="nav-link" id="v-pills-iter-tab" data-toggle="pill" href="#v-pills-iter"
-           role="tab" aria-controls="v-pills-iter" aria-selected="false">
-            <i class="pr-1" style="width: 20px; height: 20px;" data-feather="calendar"></i>
-            Iteration
-        </a>
       </div>
     </div>
-    <div class="col-9">
+    <div class="col-9 pl-5">
       <div class="tab-content" id="v-pills-tabContent">
         <div class="tab-pane fade show active" id="v-pills-rev" role="tabpanel" aria-labelledby="v-pills-home-tab">
           {% include 'includes/_revision.htm.j2' %}
-        </div>
-        <div class="tab-pane fade" id="v-pills-iter" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-          <ul class="list-group w-50 mx-auto">
-            <li class="list-group-item">1st revision: <strong>24 hours</strong></li>
-            <li class="list-group-item">2nd revision: + <strong>1 week</strong></li>
-            <li class="list-group-item">3rd revision: + <strong>1 month</strong></li>
-            <li class="list-group-item">4th revision: + <strong>6 months</strong></li>
-          </ul>
         </div>
         <div class="tab-pane fade" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-profile-tab">
           {% include 'includes/_subject.htm.j2' %}
