@@ -1,0 +1,150 @@
+{% extends "base.htm.j2" %}
+
+{% block content %}
+<div class="section__welcome">
+  <h1>Hello {{current_user.username}}!</h1>
+</div>
+
+<div class="section__coming py-5">
+  <div class="section__coming-header-img ml-2">
+    <img src="{{ url_for('static', filename='img/home-1.png') }}" alt="illustration by Ouch.pics" style="width: 100%" class="d-inline shadow-sm align-top">
+  </div>
+  <div class="content-right px-3">
+    <div class="section__coming-header-title pb-5">
+      <h1 class="d-inline">Coming Up</h1>
+      <div class="badges d-inline float-right pr-5">
+        <span class="badge badge-secondary">Exam <span class="font-weight-bold">2</span></span>
+        <span class="badge badge-secondary">Quiz <span class="font-weight-bold">4</span></span>
+        <span class="badge badge-secondary">Assignments <span class="font-weight-bold">1</span></span>
+      </div>
+    </div>
+    <div class="section__coming-content">
+      <div class="d-flex flex-row  flex-wrap justify-content-start bd-highlight mb-3">
+        <div class="card ml-2 mt-2 shadow-sm" style="height: 10rem; width: 15rem;">
+          <div class="card-body">
+            <h5 class="card-title">Algebra fundamentals</h5>
+            <p class="card-subtitle card-info-date mb-2 text-muted">On Tuesday, Nov 5</p>
+            <small class="text-warning card-info-small bg-1 px-2 rounded-left rounded-right">Quiz</small>
+            <i data-feather="more-horizontal" class="card-info-more"></i>
+          </div>
+        </div>
+        <div class="card ml-2 mt-2 shadow-sm" style="height: 10rem; width: 15rem;">
+          <div class="card-body">
+              <h5 class="card-title">Force and motion</h5>
+              <p class="card-subtitle card-info-date mb-2 text-muted">On Friday, Nov 15</p>
+              <small class="text-info card-info-small bg-2 px-2 rounded-left rounded-right">Assignment</small>
+              <i data-feather="more-horizontal" class="card-info-more"></i>
+          </div>
+        </div>
+        <div class="card ml-2 mt-2 shadow-sm" style="height: 10rem; width: 15rem;">
+          <div class="card-body">
+              <h5 class="card-title">Climate change</h5>
+              <p class="card-subtitle card-info-date mb-2 text-muted">Due Monday, Nov 11</p>
+              <small class="text-warning card-info-small bg-1 px-2 rounded-left rounded-right">Quiz</small>
+              <i data-feather="more-horizontal" class="card-info-more"></i>
+          </div>
+        </div>
+        <div class="card ml-2 mt-2 shadow-sm" style="height: 10rem; width: 15rem;">
+          <div class="card-body">
+              <h5 class="card-title">Force and motion</h5>
+              <p class="card-subtitle card-info-date mb-2 text-muted">On Friday, Nov 15</p>
+              <small class="text-info card-info-small bg-2 px-2 rounded-left rounded-right">Assignment</small>
+              <i data-feather="more-horizontal" class="card-info-more"></i>
+          </div>
+        </div>
+        <div class="card ml-2 mt-2 shadow-sm" style="height: 10rem; width: 15rem;">
+          <div class="card-body">
+              <h5 class="card-title">Climate change</h5>
+              <p class="card-subtitle card-info-date mb-2 text-muted">Due Monday, Nov 11</p>
+              <small class="text-warning card-info-small bg-1 px-2 rounded-left rounded-right">Quiz</small>
+              <i data-feather="more-horizontal" class="card-info-more"></i>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="btn btn-outline-info mx-auto mt-4">View Calendar</button>
+    </div>
+  </div>
+</div>
+
+<div class="sect__latest pt-5 pl-3 pr-2">
+  <div class="sect__latest-L pr-3">
+    <h1 class="sect__latest-title">My past year papers</h1>
+    <div class="pt-3">
+      <a class="h4 font-weight-bold text-primary pl-4" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Biology
+        <span class="fa" aria-hidden="true"></span>
+      </a>
+      <a class="ml-5 text-muted float-right pr-5">5</a>
+    </div>
+    <div class="collapse show ml-2" id="collapseExample">
+      <ul class="topic-list list-group list-group-flush bg-transparent mx-3 pt-3">
+        <li class="list-group-item bg-transparent d-flex justify-content-between">
+          Reproduction
+          <div class="section__latest-info">
+            <small class="text-muted pr-2">Uploaded Oct 4</small>
+            <a href=""><i data-feather="download-cloud"></i></a>
+          </div>
+        </li>
+        <li class="list-group-item bg-transparent d-flex justify-content-between">Plant systems and ecology
+          <div class="section__latest-info">
+            <small class="text-muted pr-2">Uploaded Sept 15</small>
+            <a href=""><i data-feather="download-cloud"></i></a>
+          </div>
+        </li>
+        <li class="list-group-item bg-transparent d-flex justify-content-between">Evolution, ecology and diversity
+          <div class="section__latest-info">
+            <small class="text-muted pr-2">Uploaded Sept 5</small>
+            <a href=""><i data-feather="download-cloud"></i></a>
+          </div>
+        </li>
+        <li class="list-group-item bg-transparent d-flex justify-content-between">Cell structure and specialization
+          <div class="section__latest-info">
+            <small class="text-muted pr-2">Uploaded Sept 3</small>
+            <a href=""><i data-feather="download-cloud"></i></a>
+          </div>
+        </li>
+        <li class="list-group-item bg-transparent d-flex justify-content-between">Central nervous systems and brain functions
+          <div class="section__latest-info">
+            <small class="text-muted pr-2">Uploaded 10 Oct</small>
+            <a href=""><i data-feather="download-cloud"></i></a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!--  -->
+    <div class="pt-3">
+      <a class="h4 font-weight-bold text-primary pl-4" data-toggle="collapse" href="#subject" role="button" aria-expanded="false" aria-controls="subject">
+        Geography
+        <span class="fa" aria-hidden="true"></span>
+      </a>
+      <a class="ml-5 text-muted float-right pr-5">3</a>
+    </div>
+    <div class="collapse ml-2" id="subject">
+      <ul class="topic-list list-group list-group-flush bg-transparent mx-3 pt-3">
+        <li class="list-group-item bg-transparent d-flex justify-content-between">
+          Extreme Weather and Climate
+          <div class="section__latest-info">
+            <small class="text-muted pr-2">Uploaded Oct 4</small>
+            <a href=""><i data-feather="download-cloud"></i></a>
+          </div>
+        </li>
+        <li class="list-group-item bg-transparent d-flex justify-content-between">Global Warming
+          <div class="section__latest-info">
+            <small class="text-muted pr-2">Uploaded Sept 15</small>
+            <a href=""><i data-feather="download-cloud"></i></a>
+          </div>
+        </li>
+        <li class="list-group-item bg-transparent d-flex justify-content-between">Coastal Geography
+          <div class="section__latest-info">
+            <small class="text-muted pr-2">Uploaded Sept 5</small>
+            <a href=""><i data-feather="download-cloud"></i></a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="sect__latest-R">
+    <img src="{{ url_for('static', filename='img/home-2.png') }}" alt="illustration by Ouch.pics" class="float-right w-100 d-inline shadow-sm align-top">
+  </div>
+</div>
+{% endblock %}

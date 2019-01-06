@@ -1,37 +1,68 @@
 {% extends "base.htm.j2" %}
 
 {% block content %}
-  <h1>Register</h1>
   <form action="" method="post">
-      {{ form.hidden_tag() }}
-      <p>
-        {{ form.username.label }}<br>
-        {{ form.username(size=32) }}<br>
-        {% for error in form.username.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-      </p>
-      <p>
-        {{ form.email.label }}<br>
-        {{ form.email(size=64) }}<br>
-        {% for error in form.email.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-      </p>
-      <p>
-        {{ form.password.label }}<br>
-        {{ form.password(size=32) }}<br>
-        {% for error in form.password.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-      </p>
-      <p>
-        {{ form.password2.label }}<br>
-        {{ form.password2(size=32) }}<br>
-        {% for error in form.password2.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-      </p>
-      <p>{{ form.submit() }}</p>
+    {{ form.hidden_tag() }}
+    <p>
+      {{ form.username.label }}<br>
+      {{ form.username(size=32) }}<br>
+      {% for error in form.username.errors %}
+      <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}
+    </p>
+    <p>
+      {{ form.email.label }}<br>
+      {{ form.email(size=64) }}<br>
+      {% for error in form.email.errors %}
+      <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}
+    </p>
+    <p>
+      {{ form.password.label }}<br>
+      {{ form.password(size=32) }}<br>
+      {% for error in form.password.errors %}
+      <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}
+    </p>
+    <p>
+      {{ form.password2.label }}<br>
+      {{ form.password2(size=32) }}<br>
+      {% for error in form.password2.errors %}
+      <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}
+    </p>
+    <p>{{ form.submit() }}</p>
   </form>
+  <div id="app">
+    <template id="step1" v-if="currentStep == 1">
+      <!-- <img src="{{ url_for('static', filename='img/home-1.png') }}" alt="illustration by Ouch.pics" style="width: 10%" class="d-inline shadow-sm align-top"> -->
+      <h1>Hello there! <small class="text-muted">Let's get started...</small></h1>
+      Hello my name is 
+      <input type="text" name="name" v-model="step1.name" placeholder="Full name" class="form-control form-control-sm w-25 d-inline">
+      & I am in
+      <select class="form-control form-control-sm d-inline" style="width: 100px;" name="email" v-model="step1.email" >
+        <option>Junior 1</option>
+        <option>Junior 2</option>
+        <option>Senior 1</option>
+        <option>Senior 2</option>
+      </select>
+      <br>
+      <button type="submit" class="btn btn-outline-primary mx-auto" @click.prevent="goToStep(2)">Next</button>
+    </template>
+    <template id="step2" v-if="currentStep == 2">
+      <h1>Okay almost there! <small class="text-muted">A few more details...</small></h1>
+      My email address is
+      <input type="text" name="city" v-model="step2.city" placeholder="john@email.com" class="form-control form-control-sm w-25 d-inline">
+      & password is  
+      <input type="password" name="state" v-model="step2.state" class="form-control form-control-sm w-25 d-inline">
+      <button type="button" @click.prevent="goToStep(3)">Finish</button>
+    </template>
+    <template id="step3" v-if="currentStep == 3">
+      <strong>Name:</strong> <span v-html="step1.name"></span><br />
+      <strong>Email:</strong> <span v-html="step1.email"></span><br />
+      <strong>City:</strong> <span v-html="step2.city"></span><br />
+      <strong>State:</strong> <span v-html="step2.state"></span>
+      <a class="text-danger" @click.prevent="goToStep(1)">Cancel</a>
+    </template>
+  </div>
 {% endblock %}

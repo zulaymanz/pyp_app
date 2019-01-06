@@ -1,0 +1,23 @@
+{% extends "base.htm.j2" %}
+
+{% block content %}
+{% include 'includes/_usernavbar.html' %}
+<h1>Welcome. This is the pyp page!</h1>
+<form method="post" enctype="multipart/form-data">
+  {{ form.hidden_tag() }}
+  <div class="form-group col-md-6">
+    <label for="topic">Topic <span class="text-danger">*</span></label>
+    <select name="topic" id="topic" class="form-control">
+      {% for topic in topics %}>
+      <option value="{{topic.id}}">{{topic.topic_name}}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="file">Select a file</label>
+    {{ form.file }}
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock %}

@@ -5,25 +5,17 @@ from flask_login import current_user
 main = Blueprint('main', __name__)
 
 @main.route('/')
-@main.route('/index')
+@main.route('/home')
 # @login_required
 def index():
-  posts = [
-    {
-      'author': {'username': 'John'},
-      'body': 'Beautiful day in Portland!'
-    },
-    {
-      'author': {'username': 'Susan'},
-      'body': 'The Avengers movie was so cool!'
-    }
-  ]
-  icon = "teacher.svg"
+  # icon = "teacher.svg"
   if current_user.is_authenticated:
+    page = 'home.html'
     if current_user.urole == 'STUDENT':
-      icon = 'student.svg'
-  return render_template('index.htm.j2', icon=icon, posts=posts)
-
+      page = 'student/index.htm.j2'
+    elif current_user.urole == 'SCHOOL':
+      page = 'student/index.htm.j2'
+  return render_template(page)
 
 @main.route('/about')
 def about():

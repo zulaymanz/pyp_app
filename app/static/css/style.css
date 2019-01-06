@@ -1,3 +1,6 @@
+body {
+  background-image: linear-gradient(to bottom, #ffffff, #f0ffff, #d1ffff, #c8ffeb, #eaffbe);
+}
 .user-avatar {
   width: 60px;
   padding: 2px;
@@ -58,4 +61,106 @@
 .home-icon {
   width: 200px;
   height: 200px;
+}
+
+.section__coming{
+  /* background: url(../img/background-pattern.png); */
+  background-size: 70px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.section__coming-header-img{
+  grid-row: 1 / span 2;
+  grid-column: 1 / span 1;
+}
+.content-right {
+  grid-row: 1 / span 2;
+  grid-column: 2 / span 2;
+}
+.card-info-date {
+  font-size: 0.8em;
+}
+.card-info-small {
+  position: absolute;
+  bottom: 10px;
+}
+.card-info-more {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  color: lightslategray;
+  cursor: pointer;
+}
+.bg-1 {
+  background: #fff4e4;
+}
+.bg-2 {
+  background: #cdfefe;
+}
+
+.section__coming-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.sect__latest {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+/* .sect__latest-L {
+  padding-left: 50px;
+}
+.sect__latest-title {
+  padding-bottom: 20px;
+} */
+/* [data-toggle="collapse"] .fa:before {  
+  content: "-";
+}
+
+[data-toggle="collapse"].collapsed .fa:before {
+  content: "+";
+} */
+
+.active-nav {
+  border-bottom: 2px solid;
+}
+
+/**
+ * ----------------------------------------
+ * animation scale-in-hor-left
+ * ----------------------------------------
+ */
+ @-webkit-keyframes scale-in-hor-left {
+  0% {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+    -webkit-transform-origin: 0% 0%;
+            transform-origin: 0% 0%;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    -webkit-transform-origin: 0% 0%;
+            transform-origin: 0% 0%;
+    opacity: 1;
+  }
+}
+@keyframes scale-in-hor-left {
+  0% {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+    -webkit-transform-origin: 0% 0%;
+            transform-origin: 0% 0%;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    -webkit-transform-origin: 0% 0%;
+            transform-origin: 0% 0%;
+    opacity: 1;
+  }
 }
