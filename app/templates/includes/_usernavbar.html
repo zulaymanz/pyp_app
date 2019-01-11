@@ -1,6 +1,5 @@
 
 <div class="user-header pb-3 m-2 border-bottom">
-  <img src="{{ url_for('static', filename=current_user.urole+'.svg') }}" alt="Avatar" class="d-inline user-avatar align-middle rounded-circle border border-primary">  
   <h1 class="pl-2 d-inline align-middle">Hi, {{ current_user.username }}!</h1>
   <span class="sub-nav pl-3">
       <a id="unav-1" class="btn btn-outline-secondary border-0" href = {{ url_for('school.restricted_view_for_school') }}>

@@ -8,6 +8,7 @@ dtdt = datetime.datetime
 # Constant
 NOW = datetime.datetime.now()
 # Revision iterations
+# [int(x.strip()) for x in iter_dates.split('-')]
 REV_DATES = [1, 7, 30, 183]
 DATE_FORMAT = '%Y-%m-%d'
 

@@ -2,8 +2,8 @@
 
 {% block content %}
 {% include 'includes/_usernavbar.html' %}
-<h1>Welcome. This is the pyp page!</h1>
-<form method="post" enctype="multipart/form-data">
+<p class="pl-2 lead text-muted">Add your past year papers here!</p>
+<form method="post" enctype="multipart/form-data" class="w-50 mx-auto">
   {{ form.hidden_tag() }}
   <div class="form-group col-md-6">
     <label for="topic">Topic <span class="text-danger">*</span></label>
