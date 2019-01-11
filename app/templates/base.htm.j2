@@ -82,7 +82,9 @@
         }
         else if (x.indexOf('school') >= 0){
           $("#School").addClass("active-nav");
-          if (x.indexOf('pyp') >= 0){
+          if (x.indexOf('iter') >= 0){
+            $("#unav-3").addClass("active");
+          } else if (x.indexOf('pyp') >= 0){
             $("#unav-2").addClass("active");
           } else {
             $("#unav-1").addClass("active");
@@ -94,6 +96,12 @@
         else {
           $("#Home").addClass("active-nav");
         }
+
+        
+        $('#iter_btn').attr('disabled', true);
+        $('#iter_form :input').on('change', function(){
+            $('#iter_btn').removeAttr('disabled');
+        });
       });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

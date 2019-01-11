@@ -18,12 +18,14 @@ from app.school.routes import school
 from app.users.routes import users
 from app.calendar.routes import calendar
 from app.papers.routes import pyp
+from app.rev_iter.routes import rev
 
 app.register_blueprint(main)
 app.register_blueprint(school)
 app.register_blueprint(users)
 app.register_blueprint(calendar)
 app.register_blueprint(pyp)
+app.register_blueprint(rev)
 
 @app.template_filter('str_month')
 def reverse_filter(s):

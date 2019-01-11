@@ -1,0 +1,14 @@
+{% extends "base.htm.j2" %}
+
+{% block content %}
+{% include 'includes/_usernavbar.html' %}
+<p class="pl-2 lead text-muted">Edit the revision iterations here.</p>
+<form name="iter_form" id="iter_form" class="w-50 mx-auto "action="{{ url_for('rev.rev_iter') }}" method="post">
+	{% for item in r %}
+		<div class="form-group">
+			Revision #{{loop.index}}: <input type="number" class="form-control d-inline mx-3" style="width: 100px;" name="iter-{{loop.index}}" id="iter-{{loop.index}}" value={{item}}> day{% if item>2 %}s{% endif %}
+		</div>
+	{% endfor %}
+	<input class="btn btn-primary" type="submit" id="iter_btn" value="Submit" />
+</form>
+{% endblock %}

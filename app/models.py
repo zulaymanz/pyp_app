@@ -14,7 +14,6 @@ class User(UserMixin, db.Model):
   username = db.Column(db.String(64), index=True, unique=True)
   email = db.Column(db.String(120), index=True, unique=True)
   password_hash = db.Column(db.String(128))
-  posts = db.relationship('Post', backref='author', lazy='dynamic')
   urole = db.Column(db.String(80))
   
   def set_password(self, password):
@@ -71,4 +70,4 @@ class Calendar(db.Model):
   date_format = db.Column(db.String(64), index=True)
 
   def __repr__(self):
-    return '<Grade {}>'.format(self.grade_name)
+    return '<Calendar {}>'.format(self.id)

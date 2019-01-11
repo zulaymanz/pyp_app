@@ -1,6 +1,10 @@
 import calendar
 import datetime
 
+from sqlalchemy.orm import Session, load_only
+from app.models import Calendar
+from app import db
+
 from datetime import timedelta
 
 dtdt = datetime.datetime
@@ -9,8 +13,19 @@ dtdt = datetime.datetime
 NOW = datetime.datetime.now()
 # Revision iterations
 # [int(x.strip()) for x in iter_dates.split('-')]
-REV_DATES = [1, 7, 30, 183]
-DATE_FORMAT = '%Y-%m-%d'
+def get_iter():
+  i = db.session.query(Calendar).options(load_only("iteration")).all()
+  return [int(x.strip()) for x in i[0].iteration.split('-')]
+
+def get_dateFormats():
+  d = db.session.query(Calendar).options(load_only("date_format")).all()
+  return d[0].date_format 
+
+# [1, 7, 30, 183]
+REV_DATES = get_iter()
+# REV_DATES = [1, 7, 30, 183]
+# '%Y-%m-%d'
+DATE_FORMAT = get_dateFormats()
 
 dl = calendar.TextCalendar(calendar.SUNDAY)
 """
