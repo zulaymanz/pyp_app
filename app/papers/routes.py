@@ -13,10 +13,11 @@ from cloudinary.api import delete_resources_by_tag, resources_by_tag
 from cloudinary.uploader import upload
 from cloudinary.utils import cloudinary_url
 
+# import cloudinary as Cloud
 # Cloud.config.update = ({
-  # 'cloud_name':os.environ.get('CLOUDINARY_CLOUD_NAME'),
-  # 'api_key': os.environ.get('CLOUDINARY_API_KEY'),
-  # 'api_secret': os.environ.get('CLOUDINARY_API_SECRET')
+#   'cloud_name':os.environ.get('CLOUDINARY_CLOUD_NAME'),
+#   'api_key': os.environ.get('CLOUDINARY_API_KEY'),
+#   'api_secret': os.environ.get('CLOUDINARY_API_SECRET')
   # 'cloud_name':os.environ.get('zulaymanz'),
   # 'api_key': os.environ.get('615294135897313'),
   # 'api_secret': os.environ.get('gM8Jz7Tv4E0ebz0d7pAQTBhUHs8')
@@ -42,9 +43,11 @@ def dump_response(response):
 def dashboard():
   # QUERIES
   topics = db.session.query(Topic).order_by(Topic.topic_name).all()
-
   form = UploadForm()
   if form.validate_on_submit():
+    subject = request.form['subject']
+    topic = request.form['topic']
+
     # check if the post request has the file part
     if 'file' not in request.files:
       flash('No file part')
@@ -58,15 +61,20 @@ def dashboard():
     if file and allowed_file(file.filename):
       # filename = secure_filename(file.filename)
       # file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-      response = upload(file, tags=DEFAULT_TAG)
-      dump_response(response)
-      url = cloudinary_url(
-        response['public_id'],
-        format=response['format'],
-        width=200,
-        height=150,
-        crop="fill"
+      response = upload(
+        file,
+        tags=DEFAULT_TAG,
+        folder = "/"+subject.lower()+"/"+topic.lower(), 
+        public_id = file.filename.split('.')[0]
       )
+      dump_response(response)
+      # url = cloudinary_url(
+      #   response['public_id'],
+      #   format=response['format'],
+      #   width=200,
+      #   height=150,
+      #   crop="fill"
+      # )
       # pipeshelf = Cloud.uploader.upload(filename)
       return redirect(url_for('pyp.dashboard'))
     return redirect(url_for('pyp.dashboard'))

@@ -6,13 +6,23 @@
 <form method="post" enctype="multipart/form-data" class="w-50 mx-auto">
   {{ form.hidden_tag() }}
   <div class="form-group col-md-6">
+    <label for="subject">Subject</label>
+    <input type="text" name="subject" readonly id="subject" class="form-control">
+  </div>
+  <div class="form-group">
+    <div class="form-group col-md-6">
+      <label for="grade">Topic <span class="text-danger">*</span></label>
+      <input name="topic" type="text" id="autocomplete" class="form-control"/>
+    </div>
+  </div>
+  <!-- <div class="form-group col-md-6">
     <label for="topic">Topic <span class="text-danger">*</span></label>
     <select name="topic" id="topic" class="form-control">
       {% for topic in topics %}>
       <option value="{{topic.id}}">{{topic.topic_name}}</option>
       {% endfor %}
     </select>
-  </div>
+  </div> -->
   <div class="form-group col-md-6">
     <label for="file">Select a file</label>
     {{ form.file }}
